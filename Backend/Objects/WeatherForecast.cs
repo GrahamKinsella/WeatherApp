@@ -1,15 +1,30 @@
+using Newtonsoft.Json;
 using System;
 
 namespace Backend
 {
     public class WeatherForecast
     {
-        public DateTime Date { get; set; }
+        [JsonProperty]
+        public Current current { get; set; }
 
-        public int TemperatureC { get; set; }
+    }
 
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-        public string Summary { get; set; }
+    public class Current
+    {
+        [JsonProperty]
+        public DateTime sunrise { get; set; }
+        [JsonProperty]
+        public DateTime sunset { get; set; }
+        [JsonProperty]
+        public double temp { get; set; }
+        [JsonProperty]
+        public double feels_like { get; set; }
+        [JsonProperty]
+        public double humidity { get; set; }
+        [JsonProperty]
+        public double uvi { get; set; }
+        [JsonProperty]
+        public string wind_speed { get; set; }
     }
 }

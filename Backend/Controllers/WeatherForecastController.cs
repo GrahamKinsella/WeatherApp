@@ -38,8 +38,9 @@ namespace Backend.Controllers
             var responseBody = await response.Content.ReadAsStringAsync();
 
             //TODO: Create object to deserialize to
-            var json = JsonConvert.DeserializeObject(responseBody);
+            var forecast = JsonConvert.DeserializeObject<WeatherForecast>(responseBody);
 
+            //convert values to readable values - check if you need json property
         }
     }
 }
