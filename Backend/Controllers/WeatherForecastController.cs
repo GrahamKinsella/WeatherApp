@@ -27,9 +27,9 @@ namespace Backend.Controllers
         [HttpGet]
         public async void Get()
         {
-            Map map = new Map(_configuration);
+            Geolocation gl = new Geolocation(_configuration);
             var location = "Dublin, Ireland";
-            Coordinates coordinates = map.GetLatAndLong(location);
+            Coordinates coordinates = gl.GetLatAndLong(location);
 
             string key = _configuration["OpenWeatherApiKey"];
             var request = $"https://api.openweathermap.org/data/2.5/onecall?lat={coordinates.Lat}&lon={coordinates.Long}&exclude=hourly,daily&appid={key}";
@@ -38,9 +38,12 @@ namespace Backend.Controllers
             var responseBody = await response.Content.ReadAsStringAsync();
 
             //TODO: Create object to deserialize to
-            var forecast = JsonConvert.DeserializeObject<WeatherForecast>(responseBody);
+            var forecast = JsonConvert.DeserializeObject<RawWeather>(responseBody);
 
             //convert values to readable values - check if you need json property
+            var results = WeatherFormatter.FormatWeather(forecast);
+
+
         }
     }
 }

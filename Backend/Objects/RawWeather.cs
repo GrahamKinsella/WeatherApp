@@ -3,7 +3,7 @@ using System;
 
 namespace Backend
 {
-    public class WeatherForecast
+    public class RawWeather
     {
         [JsonProperty]
         public Current current { get; set; }
@@ -13,9 +13,9 @@ namespace Backend
     public class Current
     {
         [JsonProperty]
-        public DateTime sunrise { get; set; }
+        public double sunrise { get; set; }
         [JsonProperty]
-        public DateTime sunset { get; set; }
+        public double sunset { get; set; }
         [JsonProperty]
         public double temp { get; set; }
         [JsonProperty]

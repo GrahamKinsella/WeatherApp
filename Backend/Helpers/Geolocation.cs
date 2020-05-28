@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Backend.Helpers
 {
-    public class Map
+    public class Geolocation
     {
         private readonly IConfiguration _configuration;
-        public Map(IConfiguration configuration)
+        public Geolocation(IConfiguration configuration)
         {
             _configuration = configuration;
         }
         public Coordinates GetLatAndLong(string location)
         {
-            var address = new AddressData // Belgium
+            var address = new AddressData
             {
                 City = "DUBLIN",
                 State = null,
