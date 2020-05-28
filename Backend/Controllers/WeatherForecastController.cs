@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Backend.Helpers;
 using Backend.Objects;
+using GoogleMaps.LocationServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -24,12 +25,15 @@ namespace Backend.Controllers
             _configuration = configuration;
         }
 
-        [HttpGet]
-        public async void Get()
+        [HttpPost]
+        [Route("api/sendAddress")]
+        public async Task<WeatherResults> Get([FromBody]AddressData address)
         {
             Geolocation gl = new Geolocation(_configuration);
-            var location = "Dublin, Ireland";
-            Coordinates coordinates = gl.GetLatAndLong(location);
+
+            //var address = JsonConvert.DeserializeObject<AddressData>(rawAddress);
+
+            Coordinates coordinates = gl.GetLatAndLong(address);
 
             string key = _configuration["OpenWeatherApiKey"];
             var request = $"https://api.openweathermap.org/data/2.5/onecall?lat={coordinates.Lat}&lon={coordinates.Long}&exclude=hourly,daily&appid={key}";
@@ -43,6 +47,7 @@ namespace Backend.Controllers
             //convert values to readable values - check if you need json property
             var results = WeatherFormatter.FormatWeather(forecast);
 
+            return results;
 
         }
     }

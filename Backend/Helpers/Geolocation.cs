@@ -15,15 +15,8 @@ namespace Backend.Helpers
         {
             _configuration = configuration;
         }
-        public Coordinates GetLatAndLong(string location)
+        public Coordinates GetLatAndLong(AddressData address)
         {
-            var address = new AddressData
-            {
-                City = "DUBLIN",
-                State = null,
-                Country = "IRELAND",
-                Zip = "D05Y996"
-            };
 
             var key = _configuration["GoogleApiKey"];
             var locationService = new GoogleLocationService(apikey: key);

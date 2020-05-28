@@ -7,8 +7,8 @@ namespace Backend.Objects
 {
     public class WeatherResults
     {
-        public DateTime Sunrise { get; set; }
-        public DateTime Sunset { get; set; }
+        public string Sunrise { get; set; }
+        public string Sunset { get; set; }
         public double Temperature { get; set; }
         public double RealFeel { get; set; }
         public double Humidity { get; set; }
