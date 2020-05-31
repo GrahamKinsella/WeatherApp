@@ -27,6 +27,17 @@ namespace Backend
         {
             services.AddControllers();
             services.AddHttpClient();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +52,7 @@ namespace Backend
 
             app.UseRouting();
 
+            app.UseCors("AllowAllHeaders");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

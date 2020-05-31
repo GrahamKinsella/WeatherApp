@@ -1,0 +1,17 @@
+
+<div>
+      <form>
+        <input placeholder="Country" [(ngModel)]="location.Country" name="country"/>
+        <input placeholder="City"[(ngModel)]="location.City" name="city">
+        <button type="submit" (click)="getForecast()">Get Weather Forecast</button>
+      </form>
+  </div>
+  
+  <h2>Weather</h2>
+<div><span>Sunrise: </span>{{forecast.Sunrise}}</div>
+<div><span>Sunset: </span>{{forecast.Sunset}}</div>
+<div><span>Temperature: </span>{{forecast.Temperature}}</div>
+<div><span>Real Feel: </span>{{forecast.RealFeel}}</div>
+<div><span>Humidity: </span>{{forecast.Humidity}}</div>
+<div><span>UV Index: </span>{{forecast.UvIndex}}</div>
+<div><span>Wind Speed: </span>{{forecast.WindSpeed}}</div>
