@@ -21,7 +21,6 @@ export class ForecastComponent implements OnInit {
 
   getForecast(){
     this.forecastService.GetForecast(this.location).subscribe((response:any) => {
-      console.log(response);
       this.forecast.Sunrise = response.sunrise
       this.forecast.Sunset = response.sunset
       this.forecast.UvIndex = response.uvIndex
@@ -29,7 +28,6 @@ export class ForecastComponent implements OnInit {
       this.forecast.Temperature = response.temperature
       this.forecast.RealFeel = response.realFeel
       this.forecast.Humidity = response.humidity
-      console.log(this.forecast);
     });
 }
 }
