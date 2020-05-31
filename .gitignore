@@ -342,3 +342,4 @@ healthchecksdb
 
 #config
 appsettings.json
+Backend/appsettings.json

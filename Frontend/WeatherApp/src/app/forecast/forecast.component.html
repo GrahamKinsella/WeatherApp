@@ -1,12 +1,19 @@
 
 <div>
-      <form>
-        <input placeholder="Country" [(ngModel)]="location.Country" name="country"/>
-        <input placeholder="City"[(ngModel)]="location.City" name="city">
-        <button type="submit" (click)="getForecast()">Get Weather Forecast</button>
+      <form name = "locationForm">
+        <input placeholder="Country" name="country" id="country" class="form-control" required [(ngModel)]="location.country" #country="ngModel"/>
+        <input placeholder="City"name="city" id ="city" class="form-control" required [(ngModel)]="location.city" #city="ngModel"/>
+        <button type="submit" (click)="getForecast()" [disabled]="country.errors?.required || city.errors?.required">Get Weather Forecast</button>
       </form>
   </div>
-  
+
+  <div *ngIf="country.errors?.required && country.touched"> Please Enter Country
+  </div>
+
+  <div *ngIf="city.errors?.required && city.touched"> Please Enter City 
+  </div>
+
+
   <h2>Weather</h2>
 <div><span>Sunrise: </span>{{forecast.Sunrise}}</div>
 <div><span>Sunset: </span>{{forecast.Sunset}}</div>
